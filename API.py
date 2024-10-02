@@ -2,10 +2,9 @@ import os
 import requests
 from dotenv import load_dotenv
 
-# Load environment variables from .env file
+# Environment variables
 load_dotenv()
 
-# Get variables from .env
 api_key = os.getenv("OPENWEATHERMAP_API_KEY")
 city = os.getenv("CITY")
 country_code = os.getenv("COUNTRY_CODE")
@@ -17,7 +16,7 @@ url = f"http://api.openweathermap.org/data/2.5/forecast?q={city},{country_code}&
 response = requests.get(url)
 data = response.json()
 
-# Check if the response contains 'list' key
+# Check if response contains 'list' key
 if 'list' in data:
     # Extract and print the weather forecast
     forecasts = data['list']
